@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Incluindo o jQuery, necessário para o Bootstrap -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Incluindo o Popper.js, necessário para o Bootstrap -->
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- Incluindo os arquivos JavaScript do Bootstrap -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Reservar</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light menu">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav justify-content-center">
+                    <a class="nav-link active" aria-current="page" href="./index.html">P&aacute;gina Inicial</a>
+                    <a class="nav-link" href="./reserva.html">Reservas</a>
+                    <a class="nav-link" href="./contacto.html">Contacto</a>
+                    <a class="nav-link" href="/ajuda.html">Ajuda</a>
+                    <a class="nav-link" href="criar_conta.html">Criar conta</a>
+                    <a class="nav-link" href="login.html">Login</a>
+                </div>
+            </div>
+    </nav>
+    <h3 class="p-2 text-center fw-bolder" style="color: rgb(122, 117, 117);">Reserva</h3>
+    <div class="p-4 mt-3" style="background-color: lightgray;">
+        <div class="d-flex gap-5 justify-content-end">
+            <div class="mb-3">
+                <input type="date" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+                <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" id="exampleFormControlInput1"
+                    placeholder="N&uacute;mero de pessoas">
+            </div>
+            <button type="button" class="btn btn-success h-25">Reservar</button>
+
+        </div>
+    </div>
+    <div style="width: 100%; height: 20%;" class="d-flex">
+        <div>
+            <img src="./assets/books-2596809_1920.jpg" class="img-fluid p-5" style="height: 400px; width: 100%;"
+                alt="...">
+        </div>
+        <div class="p-5 w-50">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Raissa">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">N&uacute;mero do aluno</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="123456">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    Nome
+                </label>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    N&uacute;mero do aluno
+                </label>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            </div>
+            <div class="mt-4">
+                <button type="button" class="btn btn-success w-25">Procurar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-danger text-light text-center fw-bolder" style="height: 100px;">
+        <div>
+            <img src="./assets/icons8-facebook-novo-48.png" alt="">
+            <img src="./assets/icons8-instagram-48.png" alt="">
+        </div>
+        <div class="p-2">
+            Term of use. Privacy Policy
+        </div>
+    </div>
+</body>
+
+</html>
