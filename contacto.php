@@ -17,23 +17,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light menu">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav justify-content-center">
-                  <a class="nav-link active" aria-current="page" href="./index.html">P&aacute;gina Inicial</a>
-                  <a class="nav-link" href="./reserva.html">Reservas</a>
-                  <a class="nav-link" href="./contacto.html">Contacto</a>
-                  <a class="nav-link" href="/ajuda.html">Ajuda</a>
-                  <a class="nav-link" href="criar_conta.html">Criar conta</a>
-                  <a class="nav-link" href="login.html">Login</a>
-                </div>
-        </div>
-    </nav>
+    <?php
+    include_once 'menu.php';
+    ?>
     <div style="width: 100%; height: 20%;" class="d-flex justify-content-center p-4 mt-4">
         <div>
             <h3>Contacte-nos</h3>

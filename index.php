@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <!-- Incluindo os arquivos JavaScript do Bootstrap -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./styles/index.css">
-    <title>Ajuda</title>
+    <title>Iniciar Sessão</title>
 </head>
 
 <body>
@@ -25,29 +25,27 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav justify-content-center">
-                  <a class="nav-link active" aria-current="page" href="./index.html">P&aacute;gina Inicial</a>
-                  <a class="nav-link" href="./reserva.html">Reservas</a>
-                  <a class="nav-link" href="./contacto.html">Contacto</a>
-                  <a class="nav-link" href="/ajuda.html">Ajuda</a>
-                  <a class="nav-link" href="criar_conta.html">Criar conta</a>
-                  <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link active" aria-current="page" href="#">Página Inicial</a>
                 </div>
-        </div>
+            </div>
     </nav>
-    <div class="p-5 m-5" style="border-radius: 6px; background-color: lightgrey;">
-        <h4 class="text_success text-center">
-            Perguntas Frequentes</h4>
-        <p> Como adquirir um cartão da biblioteca?</p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-        faucibusquis metus hendrerit pulvinar. Vivamus a neque turpis. Nulla justo
-        sapien,mollis ac nunc vitae, efficitur pretium nibh.
-        
-        <p>Quantos livros posso  reservar?</p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-faucibusquis metus hendrerit pulvinar. Vivamus a neque turpis. Nulla justo
-sapien,mollis ac nunc vitae, efficitur pretium nibh.
-        <p> Consequências por atraso de devolução?</p>
-
+    <div style="width: 100%; height: 20%;" class="d-flex justify-content-center">
+        <form action="servidor/servidor.php" method="POST">
+            <h1 class="text-center mt-5">Iniciar Sessão</h1>
+            <div class="p-5 w-50">
+          
+                <div class="mb-2">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="E-mail" style="width: 450px;">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleFormControlInput1" name="senha" placeholder="Palavra-passe" style="width: 450px;">
+                </div>
+                <div class="mt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success" style="width: 250px;">Entrar</button>
+                </div>
+                <input type="hidden" name="accao" value="autenticar"></input>
+            </div>
+        </form>
     </div>
 
     <div class="bg-danger fixed-bottom text-light text-center fw-bolder">
@@ -56,7 +54,7 @@ sapien,mollis ac nunc vitae, efficitur pretium nibh.
             <img src="./assets/icons8-instagram-48.png" alt="">
         </div>
         <div class="p-2">
-            Term of use. Privacy Policy
+            Termos de uso. Política de Privacidade
         </div>
     </div>
 </body>

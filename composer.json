@@ -1,0 +1,11 @@
+{
+    "name": "vendor/programacao-web",
+    "description": "Description of project Programacao-web.",
+    "authors": [
+        {
+            "name": "Ekoko Clesh",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {}
+}
