@@ -85,28 +85,25 @@ session_start();
         </div>
 
 
-        <!-- Modal -->
-        <?php
-        if (isset($_SESSION['mensagem']) && $_SESSION['mensagem']): ?>
-            <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Mensagem</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><?php echo $_SESSION["mensagem"]; ?></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">Fechar</button>
-                        </div>
-                    </div>
+    <!-- Modal -->
+    <?php if (isset($_SESSION['mensagem']) && $_SESSION['mensagem']) : ?>
+        <div class="modal fade" id="meuModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensagem</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?php echo $_SESSION["mensagem"]; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
-        <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
         <script>
             $(document).ready(function () {

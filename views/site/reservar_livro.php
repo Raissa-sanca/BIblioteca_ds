@@ -1,5 +1,5 @@
     <?php
-    include_once 'menu.php';
+
     session_start();
     $base_de_dados='biblioteca';
     $usuario='root';
@@ -32,6 +32,9 @@
 </head>
 
 <body>
+    <?php
+        include_once 'menu.php';
+    ?>
     <h2 class="text-danger text-center">Reservar Livro</h2>
     <div class="d-flex justify-content-center">
         <form action="../../servidor/servidor.php" method="POST">
@@ -70,25 +73,23 @@
     </div>
 
     <!-- Modal -->
-    <?php if (isset($_SESSION['emprestimoLivro']) && $_SESSION['emprestimoLivro']): ?>
-        <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Mensagem do Modal</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p><?php echo $_SESSION["emprestimoLivro"]; ?></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Fechar</button>
-                    </div>
+    <?php if (isset($_SESSION['emprestimoLivro']) && $_SESSION['emprestimoLivro']) : ?>
+        <div class="modal fade" id="meuModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensagem</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?php echo $_SESSION["emprestimoLivro"]; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
+    </div>
     <?php endif; ?>
 </body>
 

@@ -42,7 +42,7 @@ $result = $conexao->query($sql);
     <div class="d-flex justify-content-center">
         <form action="../../servidor/servidor.php" method="POST">
             <div class="container mt-4">
-                <h2>List of Books</h2>
+                <h2>Lista dos Livros</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -108,27 +108,6 @@ $result = $conexao->query($sql);
             </div>
         </form>
     </div>
-    <!-- Modal -->
-    <?php if (isset($_SESSION['devolucao']) && $_SESSION['devolucao']) : ?>
-        <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Mensagem do Modal</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p><?php echo $_SESSION["devolucao"]; ?></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
     <div class="bg-danger fixed-bottom text-light text-center fw-bolder">
         <div>
             <img src="../../assets/icons8-facebook-novo-48.png" alt="">
@@ -173,7 +152,6 @@ $result = $conexao->query($sql);
         $('#meuModal').modal('hide');
     });
 </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function openEditModal(id) {
         $('#editModal' + id).modal('show');

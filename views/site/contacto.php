@@ -55,6 +55,37 @@
             Term of use. Privacy Policy
         </div>
     </div>
-</body>
 
+
+        <!-- Modal -->
+        <?php if (isset($_SESSION['contacto']) && $_SESSION['contacto']) : ?>
+        <div class="modal fade" id="meuModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensagem</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?php echo $_SESSION["contacto"]; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+</body>
+<script>
+    $(document).ready(function() {
+        <?php if (isset($_SESSION['contacto'])) : ?>
+            $('#meuModal').modal('show');
+        <?php endif; ?>
+        <?php unset($_SESSION['contacto']); ?>
+    });
+    $('#fecharModal').click(function() {
+        $('#meuModal').modal('hide');
+    });
+</script>
 </html>

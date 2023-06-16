@@ -57,26 +57,25 @@ session_start();
         </div>
     </div>
 </body>
-<?php if (isset($_SESSION['cadastrarLivro']) && $_SESSION['cadastrarLivro']) : ?>
-    <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
+    <!-- Modal -->
+    <?php if (isset($_SESSION['cadastrarLivro']) && $_SESSION['cadastrarLivro']) : ?>
+        <div class="modal fade" id="meuModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Mensagem do Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensagem</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><?php echo $_SESSION["cadastrarLivro"]; ?></p>
+                    <?php echo $_SESSION["cadastrarLivro"]; ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
     </div>
-<?php endif; ?>
+    <?php endif; ?>
 <script>
     $(document).ready(function() {
         <?php if (isset($_SESSION['cadastrarLivro'])) : ?>

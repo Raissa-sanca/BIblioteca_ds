@@ -56,32 +56,29 @@ include_once "menu.php";
         </table>
     </form>
 </div>
-<div class="bg-danger text-light text-center fw-bolder">
+<div class="bg-danger fixed-bottom text-light text-center fw-bolder">
         <div>
             <img src="../../assets/icons8-facebook-novo-48.png" alt="">
             <img src="../../assets/icons8-instagram-48.png" alt="">
         </div>
         <div class="p-2">
-            Term of use. Privacy Policy
+            Termos de uso. Política de Privacidade
         </div>
     </div>
-
 <!-- Modal -->
 <?php if (isset($_SESSION['devolucao']) && $_SESSION['devolucao']) : ?>
-    <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal fade" id="meuModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Mensagem do Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mensagem</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><?php echo $_SESSION["devolucao"]; ?></p>
+                    <?php echo $_SESSION["devolucao"]; ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
