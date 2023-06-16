@@ -50,8 +50,10 @@ class UtilizadorController {
         }
     
         if (empty($result)) {
+            $_SESSION["autenticar"] = "Erro! utilizador ou senha inválido";
            header("Location:../views/site/index.php");
         } else if($role === 0){
+            $_SESSION["autenticar"] = "Erro! utilizador ou senha inválido";
             header("Location:../views/site/index.php");
         }else{
             $_SESSION["utilizador"] = $email;

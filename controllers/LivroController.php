@@ -35,6 +35,13 @@ class LivroController{
             exit;
         }
     }
+    public function editarLivro($titulo, $autor, $editora, $data_publicacao, $livro_id){
+        $livro = new Livros();
+        $livro::find_by_sql("UPDATE LIVROS SET titulo='$titulo', autor='$autor', editora='$editora',
+         data_publicacao='$data_publicacao' WHERE id='$livro_id'");
+        $_SESSION["livroEditado"] = "Livro Editado com Sucesso";
+        header("Location: ../views/site/listar_livros.php");
+        exit;
 
-
+    }
 }

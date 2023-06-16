@@ -8,7 +8,7 @@ $conexao = new mysqli($host, $usuario, $senha, $base_de_dados);
 if ($conexao->connect_error) {
     die("Erro ao conectar com Base de Dados: " . $conexao->connect_error);
 }
-$sql = "SELECT * FROM livros";
+$sql = "SELECT autor, editora, id, data_publicacao, titulo FROM livros";
 // Executa a consulta SQL
 $result = $conexao->query($sql);
 ?>
@@ -40,7 +40,7 @@ $result = $conexao->query($sql);
     ?>
     <h2 class="text-danger text-center">Reservar Livro</h2>
     <div class="d-flex justify-content-center">
-        <form action="../../servidor/servidor.php" method="POST">
+        <form action="#" method="POST" id="form">
             <div class="container mt-4">
                 <h2>Lista dos Livros</h2>
                 <table class="table">
@@ -53,21 +53,17 @@ $result = $conexao->query($sql);
                         </tr>
                     </thead>
                     <tbody>
-
-                        <?php while ($row = $result->fetch_assoc()) : ?>
+                        <?php while ($row = $result->fetch_assoc()){ ?>
                             <tr>
                                 <td><?php echo $row["titulo"]; ?></td>
                                 <td><?php echo $row["autor"]; ?></td>
                                 <td><?php echo $row["editora"]; ?></td>
                                 <td><?php echo $row["data_publicacao"]; ?></td>
                                 <td>
-
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
-
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal<?php echo $row["id"]; ?>">Edit</button>
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                     <input type="hidden" name="accao" value="apagarLivro">
                                     <input type="hidden" name="idLivro" value="<?php echo $row["id"]; ?>">
-
                                 </td>
                             </tr>
                             <!-- Edit Modal -->
@@ -81,28 +77,31 @@ $result = $conexao->query($sql);
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="update.php" method="post">
+                                            <form id="formulario" action="../../servidor/servidor.php" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                                                 <div class="form-group">
-                                                    <label for="nome">Autor</label>
+                                                    <label for="editora">T&iacute;tulo</label>
+                                                    <input type="text" class="form-control" id="titulo" name="titulo" value="<?php echo $row["titulo"]; ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="autor">Autor</label>
                                                     <input type="text" class="form-control" id="autor" name="autor" value="<?php echo $row["autor"]; ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="email">Editora</label>
-                                                    <input type="text" class="form-control" id="email" name="editora" value="<?php echo $row["editora"]; ?>">
+                                                    <label for="editora">Editora</label>
+                                                    <input type="text" class="form-control" id="editora" name="editora" value="<?php echo $row["editora"]; ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="senha">Data de Publicacao</label>
-                                                    <input type="text" class="form-control" id="senha" name="data" value="<?php echo $row["data_publicacao"]; ?>">
+                                                    <label for="data">Data de Publicacao</label>
+                                                    <input type="date" class="form-control" id="data" name="data" value="<?php echo $row["data_publicacao"]; ?>">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                <button id="editar" type="submit" class="btn btn-primary" onclick="botaoClic()">Salvar alterações</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php endwhile; ?>
-                    </tbody>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -117,7 +116,6 @@ $result = $conexao->query($sql);
             Termos de uso. Política de Privacidade
         </div>
     </div>
-
     <!-- Modal -->
     <?php if (isset($_SESSION['apagado']) && $_SESSION['apagado']) : ?>
         <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
@@ -133,29 +131,49 @@ $result = $conexao->query($sql);
                         <p><?php echo $_SESSION["apagado"]; ?></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Fechar</button>
+                        <button type="button" class="btn btn-secondary" id="fecharModal">Fechar</button>
                     </div>
                 </div>
             </div>
         </div>
     <?php endif; ?>
+    <!-- Modal -->
+    <?php if (isset($_SESSION['livroEditado']) && $_SESSION['livroEditado']) : ?>
+        <div id="meuModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Mensagem do Modal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><?php echo $_SESSION["livroEditado"]; ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="fecharModal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    <script>
+    <?php echo "APAGADo ". $_SESSION["apagado"]."<br>";
+    echo "livroEditado ". $_SESSION["livroEditado"]."<br>";
+    ?>
+        $(document).ready(function() {
+            $("#meuModal").modal("show");
+            $("#fecharModal").click(function() {
+                <?php $_SESSION["apagado"] = "";?>
+                <?php $_SESSION["livroEditado"] = "";?>
+                $("#meuModal").modal("hide");
+            });
+        });
+        function botaoClic() {
+            document.getElementById("formulario").action = "../../servidor/servidor.php?edit=true";
+            document.getElementById("formulario").submit();
+        }
+    </script>
 </body>
-
-<script>
-    $(document).ready(function() {
-        <?php if (isset($_SESSION['apagado'])) : ?>
-            $('#meuModal').modal('show');
-        <?php endif; ?>
-        <?php unset($_SESSION['apagado']); ?>
-    });
-    $('#fecharModal').click(function() {
-        $('#meuModal').modal('hide');
-    });
-</script>
-<script>
-    function openEditModal(id) {
-        $('#editModal' + id).modal('show');
-    }
-</script>
-
 </html>
